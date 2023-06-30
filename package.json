@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "yym",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node src/index.ts",
-    "dev": "tsup src/index.ts"
+    "dev": "tsup src/index.ts",
+    "build": "tsup"
   },
   "bin": {
     "yym": "dist/esm/index.js"
