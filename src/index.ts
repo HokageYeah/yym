@@ -13,5 +13,5 @@ program.command("install").action(async (version) => {
 
 console.log(process.argv);
 console.log(chalk.red('红色文字'));
-// 解析命令行参数 window
+// 解析命令行参数 window 111
 program.parse(process.argv);
