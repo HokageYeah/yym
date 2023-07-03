@@ -5,6 +5,8 @@ import { lsCode } from "./code/ls";
 const a = require("./data/aaa.json");
 import { commandFn } from "./utiles/command";
 import { currentCode } from "./code/current";
+import { pingCode } from "./code/ping";
+import { useMirror } from "./code/useMirror";
 
 // npm ---- https://registry.npmjs.org/
 // cnpm --- http://r.cnpmjs.org/
@@ -33,6 +35,16 @@ commandFn("ls", "查看所有镜像", () => {
 // 查看当前源
 commandFn("current", "查看当前源", () => {
   currentCode();
+});
+
+// 测试镜像地址速度
+commandFn("ping", "测试镜像地址速度", () => {
+  pingCode();
+});
+
+// 选择使用镜像
+commandFn("use", "请选择镜像", () => {
+  useMirror();
 });
 
 // 解析命令行参数
