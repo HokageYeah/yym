@@ -1,5 +1,5 @@
 # yym 安装
-* npm install yym -g
+* npm install ch-yym  -g
 
 # yym 命令
 * yym ls 查看所有镜像
