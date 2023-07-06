@@ -1,6 +1,8 @@
 import fs from "node:fs";
-import { setFilePath } from "@/utiles";
+// import { setFilePath } from "@/utiles";
 import chalk from "chalk";
+import path from "node:path";
+import yeahurl from "node:url";
 
 // 方案一 使用ts数据，但是没法写入
 // export const mirrorAddressObj = {
@@ -46,6 +48,7 @@ import chalk from "chalk";
 // };
 // export type mirrorAddressObjType = objType & otherMirrorAddress;
 
+
 // 方案二： 使用 .json文件
 interface MirrorAddress {
   home: string;
@@ -61,16 +64,30 @@ type mirrorKey =
   | "npmMirror"
   | string;
 
-export type otherMirrorAddress = {
+type otherMirrorAddress = {
   [key in mirrorKey]: MirrorAddress;
 };
-// export const mirrorAddressObj: otherMirrorAddress =  mirrorAddress;
-export const mirrorAddressObj = (): otherMirrorAddress => {
-  // console.log('回调回调', require("../data/mirrorAddress.json"));
-  // console.log('回调回调', import("../data/mirrorAddress.json"));
-  console.log('回调回调');
-  const file_path = setFilePath("../data/mirrorAddress.json");
-  // console.log("file_path", file_path);
-  // const data = fs.readFileSync(file_path, "utf-8");
-  return require("../data/mirrorAddress.json");
+const setFilePath = (filePath?: string) => {
+  const url = import.meta.url;
+  const __dirname = path.dirname(yeahurl.fileURLToPath(url));
+  const crossPlatformPath = path.resolve(__dirname, filePath ?? "");
+  return crossPlatformPath;
 };
+// export const mirrorAddressObj: otherMirrorAddress =  mirrorAddress;
+// 读取数据
+const mirrorAddressObj = (): otherMirrorAddress => {
+  const file_path = setFilePath("../data/mirrorAddress.json");
+  try {
+    const data = fs.readFileSync(file_path, "utf-8");
+    return JSON.parse(data)
+  } catch (error) {
+    console.log(chalk.red(error))
+    return require("../data/mirrorAddress.json");
+  }
+};
+
+export {
+  otherMirrorAddress,
+  setFilePath,
+  mirrorAddressObj
+}

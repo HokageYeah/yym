@@ -1,6 +1,6 @@
 import inquirer from "inquirer";
-import { mirrorAddressObjKeys, setFilePath } from "@/utiles";
-import { mirrorAddressObj } from "@/utiles/mirrorAddress";
+import { mirrorAddressObjKeys } from "@/utiles";
+import { mirrorAddressObj, setFilePath } from "@/utiles/mirrorAddress";
 import fs from "node:fs";
 import chalk from "chalk";
 
@@ -36,11 +36,11 @@ export const addMirror = () => {
       },
     },
   ];
-  inquirer.prompt<addValeType>(questions).then(async (res) => {
+  inquirer.prompt<addValeType>(questions).then((res) => {
     console.log(res);
     const name = res.name;
     const url = res.url;
-    const module = await mirrorAddressObj();
+    const module = mirrorAddressObj();
     const del = (url: string) => {
       const arr = url.split("");
       return arr[arr.length - 1] == "/"
@@ -53,7 +53,6 @@ export const addMirror = () => {
       ping: del(url.trim()),
     };
     // 写入到mirrorAddress.json 文件中
-    console.log(module);
     try {
       const file_path = setFilePath("../data/mirrorAddress.json");
       fs.writeFileSync(file_path, JSON.stringify(module, null, 4));
