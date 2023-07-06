@@ -2,11 +2,14 @@
 import { Command, program } from "commander";
 import chalk from "chalk";
 import { lsCode } from "./code/ls";
-const a = require("./data/aaa.json");
+// const a = require("./data/mirrorAddress.json");
 import { commandFn } from "./utiles/command";
 import { currentCode } from "./code/current";
 import { pingCode } from "./code/ping";
-import { useMirror } from "./code/useMirror";
+import { useMirror } from "./code/use";
+import { addMirror } from "./code/add";
+
+// console.log('mirrorAddress.json', a);
 
 // npm ---- https://registry.npmjs.org/
 // cnpm --- http://r.cnpmjs.org/
@@ -45,6 +48,11 @@ commandFn("ping", "测试镜像地址速度", () => {
 // 选择使用镜像
 commandFn("use", "请选择镜像", () => {
   useMirror();
+});
+
+// 新增镜像
+commandFn("add", "添加自定义镜像", () => {
+  addMirror();
 });
 
 // 解析命令行参数
