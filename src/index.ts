@@ -8,6 +8,7 @@ import { currentCode } from "./code/current";
 import { pingCode } from "./code/ping";
 import { useMirror } from "./code/use";
 import { addMirror } from "./code/add";
+import { deleteMirror } from "./code/delete";
 
 // console.log('mirrorAddress.json', a);
 
@@ -50,9 +51,14 @@ commandFn("use", "请选择镜像", () => {
   useMirror();
 });
 
-// 新增镜像
+// 新增自定义镜像
 commandFn("add", "添加自定义镜像", () => {
   addMirror();
+});
+
+// 删除自定义镜像
+commandFn("delete", "删除自定义镜像", () => {
+  deleteMirror();
 });
 
 // 解析命令行参数

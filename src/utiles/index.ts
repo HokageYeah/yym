@@ -18,9 +18,11 @@ const getCurrentMirror = execSync("npm get registry", {
 const ownmirrorAddressObj = mirrorAddressObj();
 
 const mirrorAddressObjKeys = Object.keys(ownmirrorAddressObj);
+const whiteList = ['npm', 'yarn', 'tencent', 'cnpm', 'taobao', 'npmMirror'] //白名单
 
 export {
   // setFilePath,
   getCurrentMirror,
-  mirrorAddressObjKeys
+  mirrorAddressObjKeys,
+  whiteList
 }
