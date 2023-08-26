@@ -68,6 +68,7 @@ const copyFilesPlugin = {
 export default defineConfig({
   target: "node12", //目标环境的代码输出格式
   entryPoints: ["src/index.ts"], // 根据实际情况修改入口文件路径
+  // format: ["cjs","esm"], //输出的模块格式。
   format: ["esm"], //输出的模块格式。
   dts: true, //是否生成类型声明文件（默认为 true）。如果你的 TypeScript 项目中没有使用类型声明，可以将其设置为 false。
   sourcemap: true, //生成完整的 Source Map 文件

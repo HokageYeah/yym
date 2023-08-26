@@ -1,6 +1,6 @@
 {
   "name": "ch-yym",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "yym",
   "main": "index.js",
   "type": "module",
@@ -8,7 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node src/index.ts",
     "dev": "tsup src/index.ts",
-    "build": "tsup"
+    "build": "tsup && ts-node scripts/build.ts ",
+    "publish": "ts-node scripts/publish.ts"
   },
   "bin": {
     "yym": "dist/esm/index.js"
